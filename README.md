@@ -7,18 +7,68 @@ We're going to take a high level overview of Rails and the way it works. This is
 ## Before You Begin
 If you haven't already, make sure to install the Rails and Postgres gems. Navigate through the terminal to the folder you want to work in and enter the following commands:
 
-`gem install rails`
+```bash
+brew install ruby
+```
 
-`gem install pg`
+```bash
+brew upgrade ruby
+```
 
-If you have any errors while installing these gems, Google the error messages and see if you can work through them. If you can't work through the errors, reach out to an instructor for help.
+If you have any errors while installing these gems, try the following commands:
+
+```bash
+brew doctor
+brew info ruby
+```
+
+Install RVM (Ruby Version Managr:
+```bash
+curl -L https://get.rvm.io | bash -s stable --auto-dotfiles --autolibs=enable --rails
+```
+
+This will take a few minutes, and once it's done, *quit and relaunch Terminal*, then run this command:
+
+```bash
+type rvm | head -1
+```
+
+If you get `rvm is a function`, that means RVM was successfully installed. 
+
+To make sure the latest versions of RVM, Ruby and Rails were installed, run the commands below:
+
+For RVM
+
+```bash
+rvm -v
+```
+You should get rvm 1.26.10 or higher.
+
+For Ruby
+```bash
+ruby -v
+```
+
+You should get ruby 2.2.0 or higher. If you get dyld: Library not loaded: /usr/local/lib/libgmp.10.dylib, that means something is wrong with the binary version of the latest Ruby. To fix it, reinstall your desired Ruby version by disabling the binary:
+
+```bash
+rvm reinstall 2.2.0 --disable-binary
+```
+
+If you can't work through the errors, reach out to an instructor for help.
 
 ## Getting Started
 Once we've got the Rails and Postgres gems installed, we're ready to create our app by entering the following command:
 
 `rails new app_name -G --api --database=postgresql`
 
-This will build out a complete file/folder structure for a blank Rails server. Once the app has been created, we need to `cd` into it. Once inside the folder, we can run `rails db:create` to create the database for our application. It will automatically be named after our app's name. These can be found in Postico or psql as `app_name_test` and `app_name_development`, but we only need to focus on the `development` one.
+This will build out a complete file/folder structure for a blank Rails server. Once the app has been created, we need to `cd` into it. Once inside the folder, we can run:
+
+```bash
+rails db:create
+``` 
+
+This creates a database for our application. It will automatically be named after our app's name. These can be found in Postico or psql as `app_name_test` and `app_name_development`, but we only need to focus on the `development` one.
 
 # You Do
 
@@ -224,3 +274,5 @@ end
 # You Do
 
 On your own, fill out the "create" method in the "users_controller.rb". Inside the method, you will be recreating the "rock, paper, scissors" algo. You can get the players choices from the params and render the winner as the response. When you're ready to test, start your API with the CLI command `rails server` and use Insomnia to send a request.
+
+Hint: Read the Rails Getting Started Guide on params [here](https://guides.rubyonrails.org/getting_started.html#creating-articles).
