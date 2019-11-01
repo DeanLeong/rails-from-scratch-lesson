@@ -4,58 +4,9 @@
 
 We're going to take a high level overview of Rails and the way it works. This is intended to see how the files connect, and not necessarily intended to be a complete guide to making a Rails app.
 
-## Before You Begin
-If you haven't already, make sure to install the Rails and Postgres gems. Navigate through the terminal to the folder you want to work in and enter the following commands:
+## Set up your Ruby/Rails environment
 
-```bash
-brew install ruby
-```
-
-```bash
-brew upgrade ruby
-```
-
-If you have any errors while installing these gems, try the following commands:
-
-```bash
-brew doctor
-brew info ruby
-```
-
-Install RVM (Ruby Version Managr:
-```bash
-curl -L https://get.rvm.io | bash -s stable --auto-dotfiles --autolibs=enable --rails
-```
-
-This will take a few minutes, and once it's done, *quit and relaunch Terminal*, then run this command:
-
-```bash
-type rvm | head -1
-```
-
-If you get `rvm is a function`, that means RVM was successfully installed. 
-
-To make sure the latest versions of RVM, Ruby and Rails were installed, run the commands below:
-
-For RVM
-
-```bash
-rvm -v
-```
-You should get rvm 1.26.10 or higher.
-
-For Ruby
-```bash
-ruby -v
-```
-
-You should get ruby 2.2.0 or higher. If you get dyld: Library not loaded: /usr/local/lib/libgmp.10.dylib, that means something is wrong with the binary version of the latest Ruby. To fix it, reinstall your desired Ruby version by disabling the binary:
-
-```bash
-rvm reinstall 2.2.0 --disable-binary
-```
-
-If you can't work through the errors, reach out to an instructor for help.
+Follow this [guide](https://git.generalassemb.ly/sei-nyc-oasis/ruby-installfest) to set up `rbenv` 
 
 ## Getting Started
 Once we've got the Rails and Postgres gems installed, we're ready to create our app by entering the following command:
