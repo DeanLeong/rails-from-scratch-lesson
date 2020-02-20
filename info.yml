@@ -2,11 +2,11 @@
 
 # Required fields: unit, section and type
 
-unit: (unit here)
+unit: 4
 
-section: (section here)
+section: rails
 
-type: (type here)
+type: lecture
 
 
 # optional fields:
