@@ -4,7 +4,46 @@
 
 We're going to take a high level overview of Rails and the way it works. This is intended to see how the files connect, and not necessarily intended to be a complete guide to making a Rails app.
 
-## Set up your Ruby/Rails environment
+## About Ruby on Rails
+Ruby on Rails is a web application development framework written in the Ruby programming language. It was first published in 2004 by David Heinemeier Hansson —— commonly known as "DHH" in the coding and automobile racing communities. 
+
+Hansson released Rails as an open source project and was subsequently named "Hacker of the Year" by Google. He was 26 at the time. Some people think that maybe went to his head a bit...
+
+<img src="https://i.ytimg.com/vi/u1IQzyvqxos/maxresdefault.jpg" width="275px"><img src="https://pbs.twimg.com/media/D_rzu1BXsAAXjtz.jpg" width="275px"><img src="https://i.ytimg.com/vi/C0dwfl5lXnM/maxresdefault.jpg" width="275px">
+
+Regardless of what you think of DHH, he made a pretty cool thing.
+
+## Rails Philosophy
+Rails is designed to make programming web applications easier by making assumptions about what every developer needs to get started, allowing you to write less code while accomplishing more than many other languages and frameworks. 
+
+Rails is opinionated software. It makes the assumption that there is a "best" way to do things, and it's designed to encourage that way by having STRONG conventions. Coders tend to find this strict adherence to conventions either very helpful or very frustrating.
+
+The Rails philosophy includes two major guiding principles:
+
+1) Don't Repeat Yourself: DRY is a principle of software development which states that "Every piece of knowledge must have a single, unambiguous, authoritative representation within a system." By not writing the same information over and over again, code is more maintainable, more extensible, and less buggy.
+
+2) Convention Over Configuration: Rails has opinions about the best way to do many things in a web application, and defaults to this set of conventions, rather than require that you specify minutiae through endless configuration files.
+
+## MVC Architecture
+Rails is built around the concept of Model - View - Controller (MVC) Architecture. MVC is a pattern for the architecture of a software application. It separates an application into the following components:
+
+- **Models** for managing data structure and logic
+- **Controllers** for handling back-end application logic (requests and responses)
+- **Views** for handling the user interface and front-end logic
+
+This separation results in user requests being processed as follows:
+
+1) The browser (on the client) sends a request for a page to the controller on the server.
+2) The controller retrieves the data it needs from the model in order to respond to the request.
+3) The controller gives the retrieved data to the view.
+4) The view is rendered and sent back to the client for the browser to display.
+
+![](MVC-control-flow.png)
+
+Rails can either be built with views, or it can be built as a pure API without views (in which case the views would be handled by a separate front end application, like a React app). We'll be focusing on the later.
+
+## Before You Begin
+If you haven't already, make sure to install the Rails and Postgres gems. Navigate through the terminal to the folder you want to work in and enter the following commands:
 
 Follow this [guide](https://git.generalassemb.ly/sei-nyc-oasis/ruby-installfest) to set up `rbenv` 
 
@@ -45,7 +84,7 @@ The directory names highlighted in the image above should conceptually look fami
 
 ## Databases and Migrations
 
-In Rails, we use migration files to track the evolution of our database over time. Previously, when we used Sequelize with Express, we had to reset our database **every** time we made a change to a table. This works well enough for us in development, but does not work well for production databases. Facebook does not drop all of their users each time they want to implement a new feature. 
+In Rails, we use migration files to track the evolution of our database over time. Previously, when we used SQL, we had to reset our database **every** time we made a change to a table. This works well enough for us in development, but does not work well for production databases. Facebook does not drop all of their users each time they want to implement a new feature. 
 
 This is where migration files come in handy. A migration will define a specific change to the database, and are kept in a given (ideally chronological) order. By using migrations, Rails can keep track of how the database has been changed and what changes still need to happen without having to reset your entire database. 
 
@@ -99,10 +138,9 @@ The schema file represents what our database looks like currently. We can always
 
 At this point we should have a "users" table. On your own, try to make two new migrations.
 
-1. First make an ERD for how the table associations should look. You can draw one out on your desk.
-2. Make a migration that creates a "posts" table. The table should have a `content` column that is a `string`, as well as a reference key to the "users" table. You can do this by adding `user:references` to the CLI command (`rails g migration etc.`).
-3. Make a migration that creates a "comments" table. This table should also have `content` with a type of `string`, and should reference both the "users" table and the "posts" table.
-4. Once you're happy with the way that they look, migrate your files.
+1. Make a migration that creates a "posts" table. The table should have a `content` column that is a `string`, as well as a reference key to the "users" table. You can do this by adding `user:references` to the CLI command (`rails g migration etc.`).
+2. Make a migration that creates a "comments" table. This table should also have `content` with a type of `string`, and should reference both the "users" table and the "posts" table.
+3. Once you're happy with the way that they look, migrate your files.
 
 Once you've completed this exercise, let's talk about how this went. Were there any issues that you ran into? Did the commands work the way that you expected them to?
 
@@ -224,6 +262,8 @@ end
 
 # You Do
 
+
 On your own, fill out the "create" method in the "users_controller.rb". Inside the method, you will be recreating the "rock, paper, scissors" algo. You can get the players choices from the params and render the winner as the response. When you're ready to test, start your API with the CLI command `rails server` and use Insomnia to send a request.
 
 Hint: Read the Rails Getting Started Guide on params [here](https://guides.rubyonrails.org/getting_started.html#creating-articles).
+
