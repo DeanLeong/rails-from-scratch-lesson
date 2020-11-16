@@ -50,7 +50,7 @@ Follow this [guide](https://git.generalassemb.ly/sei-nyc-oasis/ruby-installfest)
 ## Getting Started
 Once we've got the Rails and Postgres gems installed, we're ready to create our app by entering the following command:
 
-`rails new app_name -G --api --database=postgresql`
+`rails new app_name -M --skip-active-storage --api --database=postgresql`
 
 This will build out a complete file/folder structure for a blank Rails server. Once the app has been created, we need to `cd` into it. Once inside the folder, we can run:
 
